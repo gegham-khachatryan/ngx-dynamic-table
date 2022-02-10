@@ -1,0 +1,21 @@
+<table>
+  <thead>
+    <tr>
+      <th *ngFor="let col of columns">{{ col.label }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of rows">
+      <td *ngFor="let col of columns">
+        <ng-template #defaultCol>{{ row[col.key] }}</ng-template>
+
+        <ng-container
+          *ngTemplateOutlet="
+            templates[col.key] ? templates[col.key] : defaultCol;
+            context: { row: row }
+          "
+        ></ng-container>
+      </td>
+    </tr>
+  </tbody>
+</table>
