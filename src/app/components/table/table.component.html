@@ -8,7 +8,6 @@
     <tr *ngFor="let row of rows">
       <td *ngFor="let col of columns">
         <ng-template #defaultCol>{{ row[col.key] }}</ng-template>
-
         <ng-container
           *ngTemplateOutlet="
             templates[col.key] ? templates[col.key] : defaultCol;

@@ -1,6 +1,6 @@
 <app-table
-  [columns]="cols"
   [rows]="data"
+  [columns]="cols"
   [templates]="{
     role: colRole,
     avatar: colAvatar,
@@ -8,19 +8,16 @@
     checkbox: colCheckbox
   }"
 >
-  <ng-template test>ededwedwe</ng-template>
-  <ng-template test2>ededwedwe</ng-template>
+  <ng-template #colCheckbox let-data="row">
+    <input type="checkbox" [(ngModel)]="data.checked" [value]="data.id" />
+  </ng-template>
+  <ng-template #colAvatar let-data="row">
+    <img width="40" height="40" [attr.src]="data.avatar" />
+  </ng-template>
+  <ng-template #colRole let-data="row">
+    <b>{{ data.role === 1 ? 'Admin' : 'Viewer' }}</b>
+  </ng-template>
+  <ng-template #colActions let-data="row">
+    <button (click)="clicked(data)">click</button>
+  </ng-template>
 </app-table>
-
-<ng-template #colCheckbox let-data="row">
-  <input type="checkbox" [(ngModel)]="data.checked" [value]="data.id" />
-</ng-template>
-<ng-template #colAvatar let-data="row">
-  <img width="40" height="40" [attr.src]="data.avatar" />
-</ng-template>
-<ng-template #colRole let-data="row">
-  <b>{{ data.role === 1 ? "Admin" : "Viewer" }}</b>
-</ng-template>
-<ng-template #colActions let-data="row">
-  <button (click)="clicked(data)">click</button>
-</ng-template>
