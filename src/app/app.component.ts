@@ -79,6 +79,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
+    this.getData();
+
     this.cols = [
       { label: "", key: "checkbox", sortable: false },
       { label: "", key: "avatar", sortable: false },
@@ -87,6 +89,12 @@ export class AppComponent implements OnInit, AfterViewInit {
       { label: "Role", key: "role", sortable: false },
       { label: "Actions", key: "actions", sortable: false },
     ]
+  }
+
+  getData() {
+    fetch('https://api.instantwebtools.net/v1/airlines').then(r => r.json()).then(res => {
+      console.log(res);
+    });
   }
 
   clicked(e: IRow): void {
